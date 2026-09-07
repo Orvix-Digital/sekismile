@@ -17,6 +17,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm build
 
 FROM base AS runner
+# Coolify runs its healthcheck inside the container and needs curl or wget;
+# the alpine base ships neither curl nor a wget that falls back from ::1.
+RUN apk add --no-cache curl
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
