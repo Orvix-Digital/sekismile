@@ -23,7 +23,9 @@ const description =
 
 // Set NEXT_PUBLIC_SITE_URL at build time once the domain is known, so the
 // generated OG image resolves to an absolute URL crawlers can fetch.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+// `||`, not `??`: an unset Docker build arg arrives as an empty string, which
+// `??` would happily pass to `new URL()`.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

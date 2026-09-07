@@ -1,0 +1,13 @@
+.git
+.github
+node_modules
+.next
+.open-next
+.wrangler
+.vercel
+.dev.vars
+.env*
+npm-debug.log*
+*.tsbuildinfo
+.DS_Store
+downloads
