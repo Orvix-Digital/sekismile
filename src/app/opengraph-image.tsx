@@ -1,10 +1,19 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Seki — Coming soon";
+export const alt = "Seki Smile — Coming soon";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+// This route is prerendered at build time, so reading the logo off disk here
+// runs in Node during the build and never on the Worker at request time.
+export default async function OpengraphImage() {
+  const logo = await readFile(
+    join(process.cwd(), "public", "seki-smile-logo.png"),
+  );
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -15,32 +24,23 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0a0a0a",
-          color: "#ededed",
+          color: "#4e1937",
+          backgroundImage:
+            "linear-gradient(160deg, #f09c9b 0%, #fdba90 28%, #fedaa4 54%, #e7d1ce 76%, #c1bdf7 100%)",
         }}
       >
+        <img src={logoSrc} alt="Seki Smile" width={332} height={260} />
         <div
           style={{
-            fontSize: 26,
-            letterSpacing: 14,
+            fontSize: 84,
+            fontWeight: 600,
+            letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#8f8f8f",
+            marginTop: 44,
           }}
         >
-          Coming soon
+          Coming Soon
         </div>
-        <div style={{ fontSize: 168, letterSpacing: -6, marginTop: 24 }}>
-          Seki
-        </div>
-        <div
-          style={{
-            width: 180,
-            height: 2,
-            background: "#ededed",
-            opacity: 0.7,
-            marginTop: 40,
-          }}
-        />
       </div>
     ),
     size,

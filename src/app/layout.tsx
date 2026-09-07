@@ -17,8 +17,9 @@ const notoSansThai = Noto_Sans_Thai({
   subsets: ["thai"],
 });
 
-const title = "Seki — Coming soon";
-const description = "Seki กำลังจะมาเร็ว ๆ นี้";
+const title = "Seki Smile — Coming soon";
+const description =
+  "Seki Smile แปรงสีฟันเจเนอเรชันใหม่ กำลังจะมาเร็ว ๆ นี้";
 
 // Set NEXT_PUBLIC_SITE_URL at build time once the domain is known, so the
 // generated OG image resolves to an absolute URL crawlers can fetch.
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    siteName: "Seki",
+    siteName: "Seki Smile",
     locale: "th_TH",
     type: "website",
     url: siteUrl,

@@ -1,29 +1,33 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
-    <main className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-6 py-24">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_35%,color-mix(in_srgb,var(--foreground)_7%,transparent),transparent)]"
-      />
+    <main className="relative flex w-full flex-1 flex-col items-center justify-center overflow-hidden px-6 py-24">
+      <div aria-hidden className="seki-gradient absolute inset-0 -z-10" />
 
-      <div className="seki-rise relative flex flex-col items-center text-center">
-        <p className="font-mono text-[0.7rem] uppercase tracking-[0.32em] text-muted">
-          Coming soon
-        </p>
+      <h1 className="seki-rise flex w-full flex-col items-center text-center">
+        <Image
+          src="/seki-smile-logo.png"
+          alt="Seki Smile"
+          width={938}
+          height={734}
+          priority
+          className="h-auto w-52 sm:w-64"
+        />
 
-        <h1 className="mt-6 text-6xl font-medium tracking-tight sm:text-7xl">
-          Seki
-        </h1>
+        <span className="mt-12 block w-full text-[clamp(2.25rem,9vw,7rem)] font-semibold uppercase leading-[0.95] tracking-[0.06em]">
+          Coming Soon
+        </span>
+      </h1>
 
-        <div className="mt-8 h-px w-32 origin-center bg-foreground/70 seki-breathe" />
+      <div className="seki-breathe mt-10 h-px w-32 origin-center bg-foreground/60" />
 
-        <p className="mt-8 max-w-sm font-thai text-base leading-relaxed text-muted">
-          เรากำลังเตรียมบางอย่างอยู่ กลับมาเยี่ยมชมกันเร็ว ๆ นี้
-        </p>
-      </div>
+      <p className="seki-rise mt-10 w-full max-w-xl text-balance text-center font-thai text-base leading-relaxed text-muted">
+        แปรงสีฟันเจเนอเรชันใหม่กำลังจะมาถึง กลับมาเยี่ยมชมกันเร็ว ๆ นี้
+      </p>
 
-      <footer className="absolute inset-x-0 bottom-8 text-center font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted">
-        © {new Date().getFullYear()} Seki
+      <footer className="absolute inset-x-0 bottom-8 px-6 text-center font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted">
+        © {new Date().getFullYear()} Seki Smile
       </footer>
     </main>
   );

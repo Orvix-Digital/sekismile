@@ -1,19 +1,14 @@
 @import "tailwindcss";
 
+/* Brand palette sampled from the Seki Smile logo and the gradient reference.
+   This is a holding page pinned to the brand's light gradient, so there is
+   deliberately no dark-scheme variant. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #6b6b6b;
-  --hairline: #e5e5e5;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #8f8f8f;
-    --hairline: #262626;
-  }
+  color-scheme: light;
+  --background: #fdcd8e;
+  --foreground: #4e1937;
+  --muted: #6b3550;
+  --hairline: color-mix(in srgb, #4e1937 30%, transparent);
 }
 
 @theme inline {
@@ -32,10 +27,34 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Vertical brand wash with a soft warm light falling from the upper right,
+   matching the gradient reference. */
+.seki-gradient {
+  background:
+    radial-gradient(
+      110% 70% at 88% 40%,
+      rgba(255, 246, 226, 0.92),
+      rgba(255, 240, 214, 0) 62%
+    ),
+    linear-gradient(
+      180deg,
+      #f09c9b 0%,
+      #f2a6a6 6%,
+      #f8ad96 18%,
+      #fdba90 30%,
+      #fdcd8e 44%,
+      #fedaa4 54%,
+      #f0d6c4 66%,
+      #e7d1ce 74%,
+      #d6cbe2 87%,
+      #c1bdf7 100%
+    );
+}
+
 @keyframes seki-rise {
   from {
     opacity: 0;
-    transform: translateY(0.5rem);
+    transform: translateY(0.75rem);
   }
   to {
     opacity: 1;
@@ -56,7 +75,7 @@ body {
 }
 
 .seki-rise {
-  animation: seki-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: seki-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .seki-breathe {
